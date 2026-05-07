@@ -1,4 +1,4 @@
-# 🔍 CrewAI JobDB  求職代理
+# 🔍 CrewAI JobDB Job Search Agent  
 
 
 ---
@@ -95,7 +95,7 @@ Edit the search terms in main.py under task_search:
 OPENAI_MODEL_NAME=gpt-4o-mini
 ```
 
-### 擴展到其他平台
+### Expand to Other Platforms
 
 You can add the following in task_search:
 -LinkedIn: site:linkedin.com/jobs "security engineer" "hong kong"
