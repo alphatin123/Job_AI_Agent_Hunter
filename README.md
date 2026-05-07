@@ -1,29 +1,27 @@
-# 🔍 CrewAI JobDB Security Engineer 求職代理
+# 🔍 CrewAI JobDB  求職代理
 
-專為 Tim Shing 設計的 AI 求職代理，自動搜尋 JobDB 香港的 Security Engineer 職缺，
-並與你的 CV 進行匹配分析，輸出完整的求職策略報告。
 
 ---
 
-## 架構說明
+## Architecture Overview
 
 ```
 main.py
-├── Agent 1: JobDB 職缺研究員    → 搜尋 & 抓取職缺資料
-├── Agent 2: CV 匹配分析師       → 計算匹配分數 & 找出技能缺口
-└── Agent 3: 求職策略報告師      → 生成完整 Markdown 報告
+├── Agent 1: JobDB Vacancy Researcher → Searches & extracts job postings
+├── Agent 2: CV Matching Analyst → Calculates matching scores & identifies skill gaps
+└── Agent 3: Job Search Strategy Reporter → Generates complete Markdown report
 ```
 
-**流程（Sequential）：**
+**Workflow (Sequential):：**
 ```
-搜尋職缺 → 匹配分析 → 生成報告（jobdb_security_report.md）
+Job Search → CV Matching Analysis → Report Generation (`jobdb_security_report.md`)
 ```
 
 ---
 
-## 快速開始
+## Quick Start
 
-### 步驟 1：安裝環境
+### Install Environment
 
 ```bash
 # 建議使用虛擬環境
@@ -34,96 +32,94 @@ source venv/bin/activate      # macOS / Linux
 pip install -r requirements.txt
 ```
 
-### 步驟 2：設定 API Keys
+### Configure API Keys or you can use ollma if no API key
 
 ```bash
 cp .env.example .env
-# 編輯 .env 填入你的 API Keys
+# Edit the .env file and add your API keys
 ```
 
-取得 API Keys：
-- **OpenAI**: https://platform.openai.com/api-keys（需付費，約 $0.01–0.05/次執行）
-- **Serper**: https://serper.dev（免費，2,500 次/月）
+Obtain API Keys:
+OpenAI: https://platform.openai.com/api-keys (Paid, approx. $0.01–$0.05 per run)
+Serper: https://serper.dev (Free tier: 2,500 searches/month)
 
-### 步驟 3：執行代理
+Step 3: Run the Agent
 
 ```bash
 python main.py
 ```
-
-執行時間約 **3–8 分鐘**，完成後自動生成 `jobdb_security_report.md`。
+Execution time: Approximately 3–8 minutes.
+Upon completion, the report jobdb_security_report.md will be automatically generated.
 
 ---
 
-## 輸出範例
+## Output Example
 
 ```markdown
-## 🏆 推薦申請職缺
+## 🏆 Recommended Job Applications
 
-### 1. Junior Security Engineer — CyberTech HK Ltd
-- 匹配分數: 82/100 ｜ 難度: Medium
-- 薪資: HKD 18,000–22,000
-- 優勢: Nessus/Nmap 經驗符合、Python 腳本能力、ISO 27001 知識
-- 建議準備: 強調 CVE 研究項目、準備 penetration testing 案例
-- 申請連結: https://www.jobdb.com/hk/job/...
+- **Matching Score**: 82/100 | Difficulty: Medium
+- **Salary**: HKD 18,000–22,000
+- **Strengths**: Nessus/Nmap experience matches, Python scripting skills, ISO 27001 knowledge
+- **Recommendations**: Highlight CVE research projects, prepare penetration testing case studies
+- **Apply Here**: https://www.jobdb.com/hk/job/...
 ```
 
 ---
 
-## 費用估算
+## Cost Estimation
 
-| 項目 | 費用 |
-|------|------|
-| OpenAI GPT-4o（每次執行） | 約 USD $0.05–0.15 |
-| Serper Search（每次執行） | 約 5–10 次搜尋（免費額度內） |
-| **每月執行 10 次** | 約 USD $1–2 |
+Item,Cost
+OpenAI GPT-4o (per run),Approx. USD $0.05 – $0.15
+Serper Search (per run),5–10 searches (within free quota)
+10 runs per month,Approx. USD $1 – $2
 
 ---
 
-## 進階設定
+## Advanced Configuration
 
-### 更換搜尋關鍵字
+### Change Search Keywords
 
-在 `main.py` 的 `task_search` 中修改搜尋詞：
+Edit the search terms in main.py under task_search:
 
 ```python
-# 加入更多職位關鍵字
-"Incident Response Analyst" Hong Kong
-"Red Team" Hong Kong entry level
+# Add more job title keywords
+"Job Title" Hong Kong
+"Job Title" Hong Kong entry level
 ```
 
-### 降低費用
+### Reduce Costs
 
 ```bash
-# 在 .env 中改用較便宜的模型
+# Use a cheaper model in .env
 OPENAI_MODEL_NAME=gpt-4o-mini
 ```
 
 ### 擴展到其他平台
 
-可在 `task_search` 中加入：
-- LinkedIn: `site:linkedin.com/jobs "security engineer" "hong kong"`
-- Indeed HK: `site:hk.indeed.com "security engineer"`
+You can add the following in task_search:
+-LinkedIn: site:linkedin.com/jobs "security engineer" "hong kong"
+-Indeed HK: site:hk.indeed.com "your job title"
 
 ---
 
 ## 注意事項
 
-- 此代理**不會自動投遞申請**，JobDB 需要登入帳號才能申請
-- 報告生成後，請手動前往各職缺連結進行申請
-- 建議每週執行一次以獲取最新職缺
-- 部分職缺連結可能因網頁抓取限制而不完整，需手動確認
+-This agent does not submit applications automatically. JobDB requires you to log in to apply.
+-After the report is generated, please manually visit each job link to submit your application.
+-It is recommended to run the agent once per week to get the latest job openings.
+-Some job links may be incomplete due to web scraping limitations — please verify manually.
 
 ---
 
-## 檔案結構
+## Project Structure
 
 ```
 jobdb_crew/
-├── main.py                    # 主程式
-├── requirements.txt           # 套件依賴
-├── .env.example               # API Keys 範本
-├── .env                       # 你的 API Keys（勿上傳 Git）
-├── README.md                  # 本說明文件
-└── jobdb_security_report.md  # 執行後自動生成的報告
+├── main.py                    # Run with: python3 main.py
+├── requirements.txt           # Installation requirements
+├── .env.example               # API Keys template
+├── .env                       # API Keys (do not upload to Git)
+├── README.md                  # Project description
+└── jobdb_security_report.md   # Generated automation report
 ```
