@@ -14,7 +14,7 @@ main.py
 
 **Workflow (Sequential):：**
 ```
-Job Search → CV Matching Analysis → Report Generation (`jobdb_security_report.md`)
+Job Search → CV Matching Analysis → Report Generation (`jobdb_report.md`)
 ```
 
 ---
@@ -24,7 +24,7 @@ Job Search → CV Matching Analysis → Report Generation (`jobdb_security_repor
 ### Install Environment
 
 ```bash
-# 建議使用虛擬環境
+#Use virtual environment
 python -m venv venv
 source venv/bin/activate      # macOS / Linux
 # venv\Scripts\activate       # Windows
