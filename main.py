@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CrewAI JobDB Security Engineer Job Search Agent - Local Ollama Version
+CrewAI JobDB   Job Search Agent - Local Ollama Version
 """
 
 import os
@@ -112,7 +112,7 @@ task_report = Task(
     expected_output="A well-formatted, professional Traditional Chinese Markdown report",
     agent=report_writer,
     context=[task_search, task_match],
-    output_file="jobdb_security_report.md",
+    output_file="jobdb_report.md",
 )
 
 # ── Crew Assembly ───────────────────────────────────────────────────────────
@@ -126,7 +126,7 @@ crew = Crew(
 
 def run():
     print("=" * 80)
-    print("🔍 CrewAI JobDB Security Engineer Job Search Agent (Local Ollama)")
+    print("🔍 CrewAI JobDB  Job Search Agent (Local Ollama)")
     print(f" Started at : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f" Model       : {local_llm.model}")
     print("=" * 80)
@@ -135,7 +135,7 @@ def run():
 
     print("\n" + "=" * 80)
     print("✅ Mission Completed!")
-    print("   Report saved as: jobdb_security_report.md")
+    print("   Report saved as: jobdb_report.md")
     print("=" * 80)
     return result
 
