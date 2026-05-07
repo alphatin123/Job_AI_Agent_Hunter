@@ -103,7 +103,7 @@ You can add the following in task_search:
 
 ---
 
-## 注意事項
+## Important Notes
 
 -This agent does not submit applications automatically. JobDB requires you to log in to apply.
 -After the report is generated, please manually visit each job link to submit your application.
