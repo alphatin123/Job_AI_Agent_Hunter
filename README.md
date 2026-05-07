@@ -1,4 +1,4 @@
-# 🔍 CrewAI JobDB Job Search Agent  
+# 🔍 CrewAI Job Search Agent  
 
 
 ---
